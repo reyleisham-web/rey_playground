@@ -1,6 +1,7 @@
 from pathlib import Path
 from ebooklib import epub
 from utils.yaml_loader import NOVEL_CONFIG
+import re
 
 # --------------------------
 # CONFIG
@@ -27,6 +28,46 @@ OUTPUT_FILE = (
 )
 
 # --------------------------
+# SORT CHAPTER FILES
+# --------------------------
+
+def chapter_sort_key(file):
+
+    numbers = [
+        int(n)
+        for n in re.findall(
+            r"\d+",
+            file.stem
+        )
+    ]
+
+    chapter = numbers[0]
+
+    # Ignore garbage part numbers
+    if len(numbers) > 1 and numbers[1] < 100:
+        part = numbers[1]
+    else:
+        part = 0
+
+    return (
+        chapter,
+        part
+    )
+
+chapter_files = sorted(
+    CHAPTERS_DIR.glob("*.txt"),
+    key=chapter_sort_key
+)
+
+print("\nFIRST 30 SORTED FILES:\n")
+
+for file in chapter_files[:30]:
+    print(file.name)
+
+print()
+print(f"Found {len(chapter_files)} chapters")
+
+# --------------------------
 # CREATE BOOK
 # --------------------------
 
@@ -42,9 +83,8 @@ chapters = []
 # LOAD CHAPTER FILES
 # --------------------------
 
-chapter_files = sorted(
-    CHAPTERS_DIR.glob("*.txt")
-)
+for file in chapter_files[:30]:
+    print(file.name)
 
 print(f"Found {len(chapter_files)} chapters")
 

@@ -1,51 +1,17 @@
 from ebooklib import epub
 from ebooklib import ITEM_DOCUMENT
 from bs4 import BeautifulSoup
-from utils.yaml_loader import NOVEL_CONFIG
-from pathlib import Path
 import csv
 
-# --------------------------
-# CONFIG
-# --------------------------
+EPUB_FILE = "sweet_little_fulang.epub"
 
-SLUG = NOVEL_CONFIG["book"]["slug"]
+print("Current working directory:")
+print(Path.cwd())
 
-EPUB_FILENAME = (
-    NOVEL_CONFIG["epub"]["filename"]
-)
-
-# --------------------------
-# PATHS
-# --------------------------
-
-BASE_DIR = Path(__file__).parent
-
-EPUB_FILE = (
-    BASE_DIR
-    / "epubs"
-    / EPUB_FILENAME
-)
-
-OUTPUT_FILE = (
-    BASE_DIR
-    / "created_files"
-    / f"{SLUG}_chapter_metadata.csv"
-)
-
-# --------------------------
-# LOAD EPUB
-# --------------------------
-
-book = epub.read_epub(
-    str(EPUB_FILE)
-)
+book = epub.read_epub(EPUB_FILE)
 
 rows = []
-
-# --------------------------
-# EXTRACT CHAPTERS
-# --------------------------
+index = 1
 
 for item in book.get_items():
 
@@ -64,24 +30,21 @@ for item in book.get_items():
 
     h1 = soup.find("h1")
 
-    if not h1:
-        continue
+    if h1:
 
-    title = h1.get_text(
-        strip=True
-    )
+        title = h1.get_text(
+            strip=True
+        )
 
-    rows.append([
-        item.get_name(),
-        title
-    ])
+        rows.append([
+            index,
+            title
+        ])
 
-# --------------------------
-# SAVE CSV
-# --------------------------
+        index += 1
 
 with open(
-    OUTPUT_FILE,
+    "chapter_metadata.csv",
     "w",
     newline="",
     encoding="utf-8-sig"
@@ -90,16 +53,15 @@ with open(
     writer = csv.writer(f)
 
     writer.writerow([
-        "File",
+        "Index",
         "Title"
     ])
 
     writer.writerows(rows)
 
 print(
-    f"Saved {len(rows)} chapter titles"
+    f"Extracted {len(rows)} chapters"
 )
 
-print(
-    f"Output: {OUTPUT_FILE}"
-)
+from pathlib import Path
+
