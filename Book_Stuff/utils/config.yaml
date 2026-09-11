@@ -1,0 +1,20 @@
+novels:
+
+  transmigration_farming:
+
+    websites:
+
+      - name: night_without_dawn
+        url: https://thenightwithoutthedawn.blogspot.com/search/label/Transmigration%20Farming%20Slapping%20in%20the%20face
+
+      - name: translator_b
+        url: https://siteb.com/transmigration-farming
+
+      - name: translator_c
+        url: https://sitec.com/transmigration-farming
+
+    pagination_keywords:
+      - older posts
+      - postingan lama
+
+    chapter_regex: "chapter\\s+(\\d+)"

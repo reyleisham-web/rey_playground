@@ -1,0 +1,23 @@
+book:
+  title: "The Sweet Little Fulang"
+  slug: "sweet_little_fulang"
+  chinese_title: "乖乖小夫郎"
+
+crawler:
+  start_url: "https://thenightwithoutthedawn.blogspot.com/search/label/The%20sweet%20little%20Fulang?m=1"
+
+scraper:
+  url_keyword: "the-sweet-little-fulang-pt1"
+  chapter_container: ".post-body"
+
+translation:
+  model: "gpt-5-nano-2025-08-07"
+
+epub:
+  title: "The Sweet Little Fulang"
+  author: "Cha Chacha"
+  language: "en"
+  filename: "The_Sweet_Little_Fulang.epub"
+
+paths:
+  corrected_folder: "corrected_translations/sweet_little_fulang"
