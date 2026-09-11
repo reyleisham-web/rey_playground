@@ -5,7 +5,7 @@ import os
 
 INPUT_EPUB = "Transmigration_Farming_Reordered.epub"
 
-os.makedirs("../chapters", exist_ok=True)
+os.makedirs("../../chapters", exist_ok=True)
 
 book = epub.read_epub(INPUT_EPUB)
 

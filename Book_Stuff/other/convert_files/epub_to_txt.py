@@ -15,7 +15,7 @@ for file in root.rglob("*.epub"):
 
 EPUB_FILE = r"../The Sweet Little Fulang.epub"
 
-OUTPUT_DIR = Path("../chapters")
+OUTPUT_DIR = Path("../../chapters")
 OUTPUT_DIR.mkdir(exist_ok=True)
 
 book = epub.read_epub(EPUB_FILE)

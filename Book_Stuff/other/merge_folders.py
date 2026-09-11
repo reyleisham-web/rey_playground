@@ -2,15 +2,15 @@ from pathlib import Path
 import shutil
 
 PT1_DIR = Path(
-    "chapters/sweet_little_fulang_pt1"
+    "../chapters/sweet_little_fulang_pt1"
 )
 
 PT2_DIR = Path(
-    "chapters/sweet_little_fulang_pt2"
+    "../chapters/sweet_little_fulang_pt2"
 )
 
 OUTPUT_DIR = Path(
-    "chapters/sweet_little_fulang"
+    "../chapters/sweet_little_fulang"
 )
 
 OUTPUT_DIR.mkdir(

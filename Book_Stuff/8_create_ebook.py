@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).parent
 CHAPTERS_DIR = (
     BASE_DIR
     / "corrected_translations"
-    / f"{SLUG}_complete"
+    / NOVEL_CONFIG["paths"]["corrected_folder"]
 )
 
 OUTPUT_FILE = (

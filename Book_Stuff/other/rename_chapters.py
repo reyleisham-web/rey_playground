@@ -1,7 +1,7 @@
 from pathlib import Path
 
 CHAPTERS_DIR = Path(
-    "chapters/sweet_little_fulang_pt1"
+    "../chapters/sweet_little_fulang_pt1"
 )
 
 files = sorted(
